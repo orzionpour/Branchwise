@@ -1,5 +1,11 @@
 # Branchwise
 
+>❗ © 2026 Or Zionpour. All rights reserved.<br>
+This code may not be copied, modified, distributed, or used
+for any purpose without explicit written permission from the author.
+Commercial use is strictly prohibited.
+
+
 Branchwise is an intelligent code review agent that analyzes pull requests, detects potential issues, and suggests improvements before they reach your main branch. It helps teams maintain clean, consistent, and high-quality code - automatically and at scale.
 
 ## Features
@@ -103,6 +109,9 @@ To run tests:
 python -m pytest
 ```
 
-## License
+----
 
-MIT
+>❗ © 2026 Or Zionpour. All rights reserved.<br>
+This code may not be copied, modified, distributed, or used
+for any purpose without explicit written permission from the author.
+Commercial use is strictly prohibited.
