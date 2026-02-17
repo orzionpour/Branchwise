@@ -4,10 +4,11 @@ Branchwise is an intelligent code review agent that analyzes pull requests, dete
 
 ## Features
 
-- **Automated PR Analysis**: Fetches PR details and diffs from GitHub.
-- **AI-Powered Review**: Uses OpenAI's GPT models to analyze code changes for bugs, security issues, performance bottlenecks, and style violations.
+- **Multi-Platform Support**: Seamlessly analyzes Pull Requests (GitHub, Bitbucket) and Merge Requests (GitLab).
+- **Automated Code Analysis**: Fetches PR/MR details and diffs automatically.
+- **AI-Powered Review**: Uses OpenAI's GPT models or local LLMs (Ollama) to analyze code changes for bugs, security issues, performance bottlenecks, and style violations.
 - **Actionable Feedback**: Provides a summary report and detailed comments.
-- **CLI Interface**: easy-to-use command line interface.
+- **CLI Interface**: Easy-to-use command line interface.
 - **Configurable**: Customize rules, ignored files, and LLM settings via config file or environment variables.
 
 ## Installation
@@ -26,9 +27,29 @@ Branchwise is an intelligent code review agent that analyzes pull requests, dete
     ```
 
 3.  **Set up configuration**:
-    Create a `.env` file in the root directory (use `.env.example` as a template):
+    Create a `.env` file in the root directory (use `.env.example` as a template).
+
+    **GitHub**:
     ```env
     BRANCHWISE_GITHUB_TOKEN=your_github_token
+    ```
+
+    **GitLab**:
+    ```env
+    BRANCHWISE_GITLAB_TOKEN=your_gitlab_token
+    # Optional: Self-hosted GitLab URL
+    # BRANCHWISE_GITLAB_URL=https://gitlab.example.com
+    ```
+
+    **Bitbucket**:
+    ```env
+    BRANCHWISE_BITBUCKET_TOKEN=your_bitbucket_token
+    # Optional: Self-hosted Bitbucket URL
+    # BRANCHWISE_BITBUCKET_URL=https://bitbucket.example.com
+    ```
+
+    **LLM Settings**:
+    ```env
     BRANCHWISE_LLM_API_KEY=your_openai_api_key
     ```
 
@@ -36,14 +57,25 @@ Branchwise is an intelligent code review agent that analyzes pull requests, dete
 
 ### Run a Review
 
-To review a specific pull request:
+Branchwise automatically detects the platform based on the URL provided.
 
+**GitHub**:
 ```bash
-branchwise review https://github.com/owner/repo/pull/123
+branchwise https://github.com/owner/repo/pull/123
+```
+
+**GitLab**:
+```bash
+branchwise https://gitlab.com/owner/repo/-/merge_requests/456
+```
+
+**Bitbucket**:
+```bash
+branchwise https://bitbucket.org/owner/repo/pull-requests/789
 ```
 
 **Options:**
-- `--dry-run`: Analyze the PR and print results to the console without posting comments to GitHub.
+- `--dry-run`: Analyze the PR and print results to the console without posting comments to the provider.
 - `--verbose`: Enable verbose logging for debugging.
 
 ### Using with Ollama (Local LLM)
